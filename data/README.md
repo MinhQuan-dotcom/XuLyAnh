@@ -2,7 +2,7 @@
 
 | Thư mục | Nội dung | Ở đâu |
 |---|---|---|
-| `data/mau/` | 20 ảnh mẫu lấy từ bộ tổng hợp, để chạy thử code | Có sẵn trong repo |
+| `data/mau/` | 25 ảnh mẫu lấy từ bộ tổng hợp (đủ mọi thư mục), để chạy thử code | Có sẵn trong repo |
 | `data/dataset_vat_phang/` | 286 ảnh tổng hợp đầy đủ | Tải từ Google Drive: `<dán link Drive vào đây>` rồi giải nén vào `data/` |
 | `data/dataset_that/` | Ảnh tự chụp (từ 09/11) | Google Drive: `<dán link>` |
 
