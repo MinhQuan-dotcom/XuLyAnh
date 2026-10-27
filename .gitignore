@@ -1,0 +1,12 @@
+   data/*
+   !data/mau/
+   !data/README.md
+   results/*
+   !results/.gitkeep
+   __pycache__/
+   *.pyc
+   .ipynb_checkpoints/
+   .vscode/
+   .idea/
+   *.zip
+   ~$*.docx
