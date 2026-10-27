@@ -9,8 +9,8 @@ Nhóm: M ·
 ## Cài đặt
 
 ```bash
-git clone <link repo>
-cd <tên repo>
+git clone <https://github.com/MinhQuan-dotcom/XuLyAnh.git>
+cd <XuLyAnh>
 pip install -r requirements.txt
 ```
 Cần Python 3.9 trở lên.
