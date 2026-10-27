@@ -1,7 +1,7 @@
 # Đo kích thước vật từ ảnh chụp nghiêng, dùng tờ A4 làm vật tham chiếu
 
 Bài tập lớn học phần **Xử lý ảnh và Thị giác máy tính (121036)**, Trường ĐH GTVT TP.HCM.
-Nhóm: ........ · Lớp: ........
+Nhóm: M ·
 
 **Thách thức C:** góc nhìn. Khi điện thoại không vuông góc với mặt bàn, tỉ lệ pixel/mm thay đổi theo vị trí và hướng của vật, nên cách đo bằng một tỉ lệ duy nhất (baseline) sai dần theo góc nghiêng.
 **Phương pháp đề xuất:** tìm 4 góc tờ A4, tinh chỉnh góc bằng giao điểm các đường thẳng khớp theo cạnh, ước lượng homography, nắn ảnh về nhìn thẳng rồi mới đo.
