@@ -1,12 +1,12 @@
 """
-Kiểm tra PHẦN D – vat.tach_vat và vat.kich_thuoc_px (trên ảnh gốc).
+Kiểm tra phần D: vat.tach_vat và vat.kich_thuoc_px (trên ảnh gốc)
   python tests/kiem_tra_D.py
   python tests/kiem_tra_D.py --du_lieu data/dataset_vat_phang
 
 Mặt nạ tờ giấy được tạo từ 4 góc đúng trong nhãn (không cần phần A). Kích thước pixel của vật được so
 với hình chữ nhật bao đáy vật đúng.
 Đạt khi: tìm được vật ở >= 95% ảnh, và với vật mỏng (dày <= 1 mm) sai số TB <= 3 px.
-(Vật dày hơn có mặt bên lộ ra nên to hơn đáy – đó là thị sai, không tính là lỗi của phần D.)
+Vật dày hơn bị lộ mặt bên nên trông to hơn đáy (thị sai), cái này không tính là lỗi phần D.
 """
 import os
 from collections import defaultdict

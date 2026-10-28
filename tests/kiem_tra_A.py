@@ -1,10 +1,10 @@
 """
-Kiểm tra PHẦN A – giay.tim_to_giay.
+Kiểm tra phần A: giay.tim_to_giay
   python tests/kiem_tra_A.py                                   (25 ảnh mẫu, nhanh)
   python tests/kiem_tra_A.py --du_lieu data/dataset_vat_phang  (286 ảnh, trước khi mở Pull Request)
 
-Đạt khi: tìm được giấy ở >= 95% ảnh có góc nghiêng <= 55°, và sai số góc trung bình <= 3 pixel.
-Tầng cực nặng (60–70°) chỉ in ra để tham khảo, không tính vào kết luận – đó là vùng điểm gãy của E4.
+Đạt khi: tìm được giấy ở >= 95% ảnh có góc nghiêng <= 55 độ, và sai số góc trung bình <= 3 pixel.
+Tầng cực nặng (60-70 độ) chỉ in ra để xem, không tính vào kết quả vì đó là vùng điểm gãy của E4.
 """
 from collections import defaultdict
 

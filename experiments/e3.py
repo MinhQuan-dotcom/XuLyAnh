@@ -1,11 +1,11 @@
 """
-E3 – Loại bỏ thành phần (ablation). Người phụ trách: N5. Hạn trên ảnh thật: 14/11.
+E3: bỏ bớt thành phần (ablation)
 
 So sánh trên tập eval, theo từng tầng:
   baseline          : cách đo thông thường
   day_du            : phương pháp đề xuất đầy đủ
-  bo_nan_anh        : tắt bước nắn ảnh (tham_so nan_anh=False) – kỳ vọng tụt về gần baseline
-  bo_tinh_chinh_goc : tắt bước tinh chỉnh góc – kỳ vọng sai số tăng, rõ nhất ở tầng nặng
+  bo_nan_anh        : tắt bước nắn ảnh (tham_so nan_anh=False), kỳ vọng tụt về gần baseline
+  bo_tinh_chinh_goc : tắt bước tinh chỉnh góc, kỳ vọng sai số tăng, rõ nhất ở tầng nặng
 
   python experiments/e3.py --du_lieu data/dataset_vat_phang
 """

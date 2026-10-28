@@ -1,5 +1,5 @@
 """
-E1 – Chứng cứ thách thức. Người phụ trách: N3 (chạy), N5 (script). Hạn trên ảnh thật: 10/11.
+E1: chứng cứ thách thức
 
 Chạy baseline trên tập eval đã phân tầng, báo sai số theo từng tầng và từng hướng đặt vật,
 rồi lấy ra các ảnh baseline đo sai nhiều nhất (ít nhất 3 ảnh) kèm ảnh trung gian để đưa vào báo cáo.

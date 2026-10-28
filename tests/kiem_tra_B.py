@@ -1,9 +1,9 @@
 """
-Kiểm tra PHẦN B – goc.tinh_chinh_goc.
+Kiểm tra phần B: goc.tinh_chinh_goc
   python tests/kiem_tra_B.py
   python tests/kiem_tra_B.py --du_lieu data/dataset_vat_phang
 
-Lấy 4 góc ĐÚNG từ nhãn, cộng nhiễu ngẫu nhiên (lệch khoảng 3 pixel) làm "góc thô", gọi tinh_chinh_goc,
+Lấy 4 góc đúng từ nhãn, cộng nhiễu ngẫu nhiên (lệch khoảng 3 pixel) làm "góc thô", gọi tinh_chinh_goc,
 rồi so sai số trước và sau.
 Đạt khi: sai số TB sau tinh chỉnh <= 1.5 px VÀ giảm ít nhất 40% so với góc thô.
 """

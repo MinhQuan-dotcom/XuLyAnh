@@ -1,38 +1,31 @@
-"""
-PHẦN C – Homography và nắn ảnh.
-Người làm: ........   Hạn: 01/11   Kiểm tra: python tests/kiem_tra_C.py
+# Phần C: homography và nắn ảnh
+# Người làm: ........
+# Kiểm tra: python tests/kiem_tra_C.py
 
-Phần C KHÔNG cần chờ phần A: file kiểm tra lấy 4 góc đúng từ nhãn để thử.
-"""
 import numpy as np
 import cv2
 
-# Kích thước tờ A4 (mm), thứ tự góc khớp với giay.sap_xep_4_goc: trên-trái, trên-phải, dưới-phải, dưới-trái
+# 4 góc tờ A4 theo mm, cùng thứ tự với giay.sap_xep_4_goc
 A4_MM = np.array([[0, 0], [210, 0], [210, 297], [0, 297]], dtype=np.float64)
 
 
 def tinh_homography_dlt(diem_nguon, diem_dich):
     """
-    Tự viết phép tính homography bằng DLT (Direct Linear Transform), KHÔNG dùng cv2.findHomography.
+    Tự tính homography bằng DLT, không dùng cv2.findHomography.
+    diem_nguon, diem_dich: mảng (4, 2) (hoặc nhiều điểm hơn)
+    Trả về H (3, 3) với H[2, 2] = 1.
 
-    Đầu vào : diem_nguon, diem_dich – numpy (4, 2) (hoặc nhiều hơn 4 điểm)
-    Đầu ra  : H – numpy (3, 3), sao cho [x', y', 1] ~ H @ [x, y, 1], đã chuẩn hóa H[2, 2] = 1
-
-    Gợi ý
-      Mỗi cặp (x, y) -> (x', y') cho 2 hàng của ma trận A:
-        [-x, -y, -1,  0,  0,  0, x*x', y*x', x']
-        [ 0,  0,  0, -x, -y, -1, x*y', y*y', y']
-      Nghiệm h là vector kỳ dị phải ứng với giá trị kỳ dị nhỏ nhất:
-        _, _, Vt = np.linalg.svd(A);  h = Vt[-1]
-      H = h.reshape(3, 3) / h[8]
-      (Nâng cao, nên làm: chuẩn hóa tọa độ trước (Hartley normalization) để ổn định số.)
+    Mỗi cặp điểm (x, y) -> (u, v) cho 2 dòng của ma trận A:
+      [-x, -y, -1,  0,  0,  0, x*u, y*u, u]
+      [ 0,  0,  0, -x, -y, -1, x*v, y*v, v]
+    Giải bằng SVD, h là dòng cuối của Vt, rồi reshape (3, 3) và chia cho h[8].
     """
-    # TODO (Phần C)
+    # TODO
     raise NotImplementedError
 
 
 def tinh_homography(goc_anh, tu_viet=False):
-    """(Có sẵn) H biến tọa độ ảnh (px) -> tọa độ trên tờ giấy (mm)."""
+    # H chuyển tọa độ ảnh (px) sang tọa độ trên tờ giấy (mm)
     goc_anh = np.asarray(goc_anh, dtype=np.float64)
     if tu_viet:
         return tinh_homography_dlt(goc_anh, A4_MM)
@@ -43,22 +36,13 @@ def tinh_homography(goc_anh, tu_viet=False):
 def nan_anh(anh, goc, s, tu_viet=False):
     """
     Nắn ảnh về nhìn thẳng tờ giấy.
+    goc: 4 góc giấy (4, 2) theo thứ tự trên-trái, trên-phải, dưới-phải, dưới-trái
+    s: số pixel trên 1 mm của ảnh nắn (ví dụ 4)
+    Trả về (anh_nan, M):
+      anh_nan: ảnh cao round(297*s), rộng round(210*s)
+      M: ma trận (3, 3) chuyển tọa độ ảnh gốc sang tọa độ ảnh nắn
 
-    Đầu vào
-      anh     : ảnh BGR
-      goc     : numpy (4, 2) – 4 góc giấy (trên-trái, trên-phải, dưới-phải, dưới-trái), pixel
-      s       : độ phân giải ảnh nắn, pixel / mm (ví dụ 4.0)
-      tu_viet : True thì dùng tinh_homography_dlt
-    Đầu ra
-      (anh_nan, M)
-      anh_nan : ảnh BGR kích thước (cao = round(297*s), rộng = round(210*s)); 1 mm = s pixel theo mọi hướng
-      M       : numpy (3, 3) biến tọa độ ảnh gốc (px) -> tọa độ ảnh nắn (px)
-
-    Gợi ý
-      H = tinh_homography(goc, tu_viet)            # ảnh -> mm
-      S = np.diag([s, s, 1.0])                     # mm -> pixel ảnh nắn
-      M = S @ H
-      anh_nan = cv2.warpPerspective(anh, M, (rộng, cao), flags=cv2.INTER_LINEAR)
+    Gợi ý: M = diag(s, s, 1) @ H, rồi cv2.warpPerspective.
     """
-    # TODO (Phần C)
+    # TODO
     return None, None

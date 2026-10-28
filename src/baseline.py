@@ -1,22 +1,17 @@
-"""
-PHẦN E (1/2) – BASELINE: cách đo thông thường, giả định ảnh chụp thẳng.
-Người làm: ........   Hạn: 01/11   Kiểm tra: python tests/kiem_tra_E.py
+# Phần E: baseline - cách đo thông thường, coi như ảnh chụp thẳng
+# Người làm: ........
+# Kiểm tra: python tests/kiem_tra_E.py
+#
+# Các bước (dùng lại hàm của phần A và D, không viết lại):
+#   1. goc, mat_na = giay.tim_to_giay(anh, tham_so)
+#   2. ti_le (px/mm) = cạnh ngắn của cv2.minAreaRect(goc) / 210
+#   3. contour = vat.tach_vat(anh, mat_na, tham_so)
+#   4. dai_px, rong_px = vat.kich_thuoc_px(contour)
+#   5. trả về dai_px / ti_le, rong_px / ti_le
+#
+# Gọi hàm dạng giay.tim_to_giay(...), vat.tach_vat(...) (import cả module) để file kiểm tra
+# thay tạm được khi phần A, D chưa xong.
 
-Baseline GHÉP các hàm của phần A và D – không viết lại chúng:
-  1. goc, mat_na = giay.tim_to_giay(anh, tham_so)                       (phần A)
-  2. ti_le (px/mm) = cạnh ngắn của cv2.minAreaRect(goc) / 210
-  3. contour = vat.tach_vat(anh, mat_na, tham_so)                         (phần D)
-  4. dai_px, rong_px = vat.kich_thuoc_px(contour)                         (phần D)
-  5. trả về dai_px / ti_le, rong_px / ti_le
-
-Phần E KHÔNG cần chờ A và D: tests/kiem_tra_E.py thay tạm A và D bằng kết quả lấy từ nhãn.
-BẮT BUỘC gọi theo dạng giay.tim_to_giay(...) và vat.tach_vat(...) (import module, không
-`from src.giay import tim_to_giay`) để file kiểm tra thay tạm được.
-
-Đầu vào / đầu ra theo docs/QUY_UOC.md:
-  do_kich_thuoc(anh, tham_so=None) -> (dai_mm, rong_mm, anh_trung_gian)
-  không đo được -> (None, None, anh_trung_gian)
-"""
 import numpy as np
 import cv2
 
@@ -25,7 +20,7 @@ from src.cau_hinh import THAM_SO_BASELINE
 
 
 def ve_ket_qua(anh, goc=None, contour=None):
-    """(Có sẵn) Vẽ 4 góc giấy (đỏ) và đường viền vật (xanh) lên bản sao của ảnh – dùng làm ảnh trung gian."""
+    # Vẽ góc giấy (đỏ) và viền vật (xanh) lên bản sao của ảnh để xem kết quả
     out = anh.copy()
     if goc is not None:
         for x, y in np.asarray(goc):
@@ -37,10 +32,11 @@ def ve_ket_qua(anh, goc=None, contour=None):
 
 
 def do_kich_thuoc(anh, tham_so=None):
+    # Trả về (dai_mm, rong_mm, anh_trung_gian), không đo được thì (None, None, anh_trung_gian)
     tham_so = {**THAM_SO_BASELINE, **(tham_so or {})}
     anh_trung_gian = {'goc': anh}
 
-    # TODO (Phần E): ghép các bước 1-5 ở đầu file.
-    # Nhớ thêm ảnh trung gian, ví dụ anh_trung_gian['ket_qua'] = ve_ket_qua(anh, goc, contour)
+    # TODO: làm các bước 1-5 ở trên
+    # nhớ lưu ảnh kết quả: anh_trung_gian['ket_qua'] = ve_ket_qua(anh, goc, contour)
 
     return None, None, anh_trung_gian

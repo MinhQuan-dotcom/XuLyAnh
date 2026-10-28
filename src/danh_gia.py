@@ -1,6 +1,5 @@
 """
 Chấm điểm dùng chung cho baseline và phương pháp đề xuất.
-Người phụ trách: N1 (khung), N3 (bổ sung nếu cần).
 
 Chạy thử từ thư mục gốc repo:
   python -m src.danh_gia --du_lieu data/mau --phuong_phap baseline

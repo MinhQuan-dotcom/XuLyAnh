@@ -1,61 +1,64 @@
-# Đo kích thước vật từ ảnh chụp nghiêng, dùng tờ A4 làm vật tham chiếu
+# Đo kích thước vật từ ảnh chụp nghiêng (dùng tờ A4 làm chuẩn)
 
-Bài tập lớn học phần **Xử lý ảnh và Thị giác máy tính (121036)**, Trường ĐH GTVT TP.HCM.
-Nhóm: ........ · Lớp: ........
+Bài tập lớn môn Xử lý ảnh và Thị giác máy tính (121036) - ĐH GTVT TP.HCM.
+Nhóm: ........  Lớp: ........
 
-**Thách thức C:** góc nhìn. Khi điện thoại không vuông góc với mặt bàn, tỉ lệ pixel/mm thay đổi theo vị trí và hướng của vật, nên cách đo bằng một tỉ lệ duy nhất (baseline) sai dần theo góc nghiêng.
-**Phương pháp đề xuất:** tìm 4 góc tờ A4, tinh chỉnh góc bằng giao điểm các đường thẳng khớp theo cạnh, ước lượng homography, nắn ảnh về nhìn thẳng rồi mới đo.
+Đề tài: chụp một vật đặt trên tờ giấy A4 rồi đo chiều dài, chiều rộng của vật (mm).
+Khó khăn chính là ảnh thường bị chụp nghiêng, nên nếu chỉ lấy một tỉ lệ pixel/mm cho cả ảnh
+(cách làm thông thường, gọi là baseline) thì càng nghiêng càng sai.
+Nhóm làm theo hướng: tìm 4 góc tờ giấy, chỉnh lại góc cho chính xác, tính homography để nắn ảnh
+về nhìn thẳng rồi mới đo.
 
 ## Cài đặt
 
-```bash
-git clone <link repo>
-cd <tên repo>
+```
+git clone https://github.com/MinhQuan-dotcom/XuLyAnh.git
+cd XuLyAnh
 pip install -r requirements.txt
 ```
-Cần Python 3.9 trở lên.
 
-## Chạy thử trên dữ liệu mẫu
+Dùng Python 3.9 trở lên.
 
-```bash
+## Chạy thử
+
+Trong repo có sẵn 25 ảnh mẫu ở `data/mau`:
+
+```
 python -m src.danh_gia --du_lieu data/mau --phuong_phap baseline
 python -m src.danh_gia --du_lieu data/mau --phuong_phap de_xuat
 ```
-Khi baseline và phương pháp chưa được cài đặt xong, lệnh vẫn chạy nhưng tỉ lệ đo được là 0%.
 
-## Chạy lại 4 thí nghiệm
-
-Tải dữ liệu đầy đủ theo hướng dẫn trong [`data/README.md`](data/README.md), rồi:
-
-```bash
-python experiments/e1.py --du_lieu data/dataset_vat_phang   # chứng cứ thách thức (baseline theo tầng)
-python experiments/e2.py --du_lieu data/dataset_vat_phang   # khảo sát tham số trên tập dev
-python experiments/e3.py --du_lieu data/dataset_vat_phang   # ablation
-python experiments/e4.py --du_lieu data/dataset_vat_phang   # điểm gãy
-```
-Kết quả (CSV và ảnh) nằm trong `results/e1` … `results/e4`. Với ảnh thật, thay `--du_lieu data/dataset_that`.
-
-## Cấu trúc
+Bộ ảnh đầy đủ (286 ảnh) để trên Drive, xem cách tải ở `data/README.md`. Có bộ đầy đủ rồi thì chạy
+các thí nghiệm:
 
 ```
-src/
-  giay.py          PHẦN A – tìm tờ giấy (4 góc + mặt nạ)
-  goc.py           PHẦN B – tinh chỉnh góc giấy bằng đường thẳng khớp
-  hinh_hoc.py      PHẦN C – homography (DLT tự viết) + nắn ảnh
-  vat.py           PHẦN D – tách vật, đo kích thước pixel
-  baseline.py      PHẦN E – baseline ghép A + D
-  phuong_phap.py   phương pháp đề xuất ghép A + B + C + D (có sẵn)
-  cau_hinh.py      tham số mặc định
-  danh_gia.py      chấm điểm dùng chung (có sẵn)
-  tien_ich.py      đọc nhãn, đọc ảnh, ghi CSV (có sẵn)
-tests/             kiem_tra_A.py … kiem_tra_E.py – mỗi phần tự kiểm tra, không cần chờ phần khác
-experiments/       e1.py … e4.py, ve_do_thi.py (PHẦN E)
-data/mau/          25 ảnh mẫu + labels.csv
-tools/             script sinh bộ ảnh tổng hợp
-report/            lý thuyết, tài liệu liên quan, file Word mẫu báo cáo
-docs/              QUY_UOC.md (quy ước), CHIA_VIEC_CODE.md (chia việc phần code)
+python experiments/e1.py --du_lieu data/dataset_vat_phang
+python experiments/e2.py --du_lieu data/dataset_vat_phang
+python experiments/e3.py --du_lieu data/dataset_vat_phang
+python experiments/e4.py --du_lieu data/dataset_vat_phang
 ```
 
-## Phân công phần code
+Kết quả nằm trong thư mục `results/`.
 
-Xem [`docs/CHIA_VIEC_CODE.md`](docs/CHIA_VIEC_CODE.md).
+## Các thư mục
+
+```
+src/            code chính
+  giay.py         tìm tờ giấy (phần A)
+  goc.py          chỉnh lại 4 góc giấy (phần B)
+  hinh_hoc.py     homography, nắn ảnh (phần C)
+  vat.py          tách vật, đo kích thước pixel (phần D)
+  baseline.py     cách đo thông thường (phần E)
+  phuong_phap.py  ghép các phần lại thành phương pháp của nhóm
+  cau_hinh.py     các tham số
+  danh_gia.py     tính sai số, tổng hợp theo tầng
+  tien_ich.py     đọc nhãn, đọc ảnh, ghi csv
+tests/          file kiểm tra cho từng phần A-E
+experiments/    e1-e4 và vẽ đồ thị
+data/           ảnh mẫu + hướng dẫn tải dữ liệu
+tools/          script tạo bộ ảnh tổng hợp
+report/         nháp báo cáo
+docs/           quy ước code, chia việc
+```
+
+Chia việc phần code: xem `docs/CHIA_VIEC_CODE.md`. Quy ước chung: `docs/QUY_UOC.md`.

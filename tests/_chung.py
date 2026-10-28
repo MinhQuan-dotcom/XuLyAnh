@@ -1,7 +1,7 @@
 """Phần dùng chung cho các file kiểm tra: đọc nhãn đúng (ground truth) từ bộ ảnh tổng hợp.
 
-Các file kiểm tra được PHÉP đọc tọa độ góc trong labels.csv (để chấm điểm từng phần).
-Code trong src/ thì KHÔNG được đọc.
+Các file kiểm tra được đọc tọa độ góc trong labels.csv (để chấm điểm từng phần).
+Code trong src/ thì không được đọc.
 """
 import argparse
 import os
@@ -13,8 +13,8 @@ GOC_REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if GOC_REPO not in sys.path:
     sys.path.insert(0, GOC_REPO)
 
-from src import tien_ich            # noqa: E402
-from src.giay import sap_xep_4_goc  # noqa: E402
+from src import tien_ich
+from src.giay import sap_xep_4_goc
 
 
 def tham_so(mo_ta):
@@ -46,5 +46,5 @@ def goc_vat_dung(h):
 
 
 def ket_luan(dat, mo_ta):
-    print('\n' + ('ĐẠT' if dat else 'CHƯA ĐẠT') + ' – ' + mo_ta)
+    print('\n' + ('ĐẠT' if dat else 'CHƯA ĐẠT') + ': ' + mo_ta)
     return 0 if dat else 1

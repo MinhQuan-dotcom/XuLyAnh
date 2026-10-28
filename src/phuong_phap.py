@@ -1,13 +1,10 @@
-"""
-PHƯƠNG PHÁP ĐỀ XUẤT – ghép các phần A, B, C, D. (Có sẵn – không cần sửa, trừ khi nhóm thống nhất.)
+# Phương pháp của nhóm: ghép phần A, B, C, D
+#   A  giay.tim_to_giay      tìm 4 góc + mặt nạ
+#   B  goc.tinh_chinh_goc    chỉnh góc (tắt bằng tham_so['tinh_chinh_goc'] = False)
+#   C  hinh_hoc.nan_anh      nắn ảnh (tắt bằng tham_so['nan_anh'] = False)
+#   D  vat.tach_vat          tách vật trên ảnh đã nắn rồi đổi ra mm
+# Khi tắt nắn ảnh (để làm E3) thì đo giống baseline nhưng lấy tỉ lệ từ 4 góc.
 
-  1. giay.tim_to_giay        (A)  4 góc thô + mặt nạ
-  2. goc.tinh_chinh_goc      (B)  tinh chỉnh góc        – tắt bằng tham_so['tinh_chinh_goc'] = False
-  3-4. hinh_hoc.nan_anh      (C)  homography + nắn ảnh  – tắt bằng tham_so['nan_anh'] = False
-  5. vat.tach_vat + kich_thuoc_px (D) trên ảnh đã nắn, chia s -> mm
-
-Khi tắt nắn ảnh (ablation E3), đo như baseline nhưng dùng 4 góc (đã/không tinh chỉnh) để lấy tỉ lệ.
-"""
 import numpy as np
 import cv2
 

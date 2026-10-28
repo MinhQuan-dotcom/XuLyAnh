@@ -1,5 +1,5 @@
 """
-E4 – Kiểm tra điểm gãy. Người phụ trách: N5 (chạy), N1 (đối chiếu dự đoán). Hạn: 15/11.
+E4: kiểm tra điểm gãy
 
 Hai phần:
   (a) Tầng cực nặng (thư mục e4_cucnang_55-75): sai số và tỉ lệ đo được theo góc nghiêng.

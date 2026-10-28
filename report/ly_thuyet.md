@@ -1,6 +1,6 @@
 # Cơ sở lý thuyết và dự đoán điểm gãy
 
-Người phụ trách: N1 · Hạn commit: 03/11/2026 (trước khi chạy E4)
+Người viết: N1. Commit trước khi chạy E4.
 
 > Bản này được commit trước khi chạy thí nghiệm. Sau khi commit, phần **Dự đoán** không được sửa.
 
@@ -23,10 +23,10 @@ Ngưỡng chấp nhận: e_max = 1 mm.
 
 | Cơ chế | Công thức / lập luận | Dự đoán cụ thể |
 |---|---|---|
-| Thị sai do độ dày t | sai số ≈ t·tan θ → θ_gãy ≈ arctan(e_max / t) | t = 1 mm: ≈ 45° · t = 3 mm: ≈ 18° · t = 5 mm: ≈ 11° · t = 10 mm: ≈ 6° |
-| Độ phân giải theo hướng bị co | sai số ≈ 2 / (s₀·cos θ) mm | s₀ = …… px/mm đo trên ảnh → θ_gãy ≈ …… |
-| Không tìm được 4 góc giấy | cạnh xa quá ngắn, quá mờ | khoảng θ ≈ 65–70° |
-| Baseline | một tỉ lệ cho cả ảnh | vượt 1 mm từ θ ≈ 10–15° |
+| Thị sai do độ dày t | sai số ~ t*tan(θ), nên θ_gãy ~ arctan(e_max / t) | t = 1 mm: ~45 độ; 3 mm: ~18 độ; 5 mm: ~11 độ; 10 mm: ~6 độ |
+| Độ phân giải theo hướng bị co | sai số ~ 2 / (s0*cos θ) mm | s0 = .... px/mm (đo trên ảnh), θ_gãy ~ .... |
+| Không tìm được 4 góc giấy | cạnh xa quá ngắn, quá mờ | khoảng 65-70 độ |
+| Baseline | một tỉ lệ cho cả ảnh | vượt 1 mm từ khoảng 10-15 độ |
 
 ## 6. Đối chiếu sau thí nghiệm (điền sau E4, KHÔNG sửa mục 5)
 <!-- Đúng / sai / đúng một phần, vì sao. -->

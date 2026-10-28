@@ -1,5 +1,5 @@
 """
-PHẦN E (2/2) – Vẽ đồ thị sai số theo góc nghiêng.
+Phần E (2/2): vẽ đồ thị sai số theo góc nghiêng
 Người làm: ........ (cùng người làm baseline)   Hạn: 01/11   Kiểm tra: python tests/kiem_tra_E.py
 
 Đồ thị chính của báo cáo và slide: trục ngang là góc nghiêng (độ), trục dọc là sai số (mm).
@@ -13,12 +13,12 @@ Chạy:
 import argparse
 import csv
 
-import _chung  # noqa: F401  (thêm thư mục gốc vào sys.path)
+import _chung  # để import được src
 from src.cau_hinh import NGUONG_DAT_MM
 
 
 def doc_ket_qua(cac_file):
-    """(Có sẵn) Đọc và gộp các file CSV kết quả, chỉ giữ ảnh đo được. Trả về list dict, số đã đổi sang float."""
+    """Đọc và gộp các file CSV kết quả, chỉ giữ ảnh đo được. Trả về list dict, số đã đổi sang float."""
     hang = []
     for f in cac_file:
         with open(f, encoding='utf-8') as fh:
@@ -33,7 +33,7 @@ def doc_ket_qua(cac_file):
 
 def gom_theo_goc(hang, buoc=5):
     """
-    Gom kết quả thành từng nhóm (phuong_phap, huong), trong mỗi nhóm lấy TRUNG BÌNH sai_so_mm theo góc
+    Gom kết quả thành từng nhóm (phuong_phap, huong), trong mỗi nhóm lấy trung bình sai_so_mm theo góc
     đã làm tròn về bội số của `buoc` độ.
     Đầu ra: dict {(phuong_phap, huong): ([goc1, goc2, ...], [sai_so_tb1, sai_so_tb2, ...])}, góc tăng dần.
     """

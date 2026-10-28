@@ -1,5 +1,5 @@
 """
-Kiểm tra PHẦN C – hinh_hoc.tinh_homography_dlt và hinh_hoc.nan_anh.
+Kiểm tra phần C: hinh_hoc.tinh_homography_dlt và hinh_hoc.nan_anh
   python tests/kiem_tra_C.py
   python tests/kiem_tra_C.py --du_lieu data/dataset_vat_phang
 

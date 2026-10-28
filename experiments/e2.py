@@ -1,5 +1,5 @@
 """
-E2 – Khảo sát tham số. Người phụ trách: N4. Hạn trên ảnh thật: 12/11.
+E2: khảo sát tham số
 
 Mỗi lần chỉ thay MỘT tham số (các tham số khác giữ mặc định trong src/cau_hinh.py), mỗi tham số
 thử ít nhất 3 giá trị, chạy trên tập DEV. Lưu ảnh trung gian của một ảnh mẫu cho mỗi giá trị

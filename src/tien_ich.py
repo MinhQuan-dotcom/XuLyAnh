@@ -1,6 +1,6 @@
 """
 Hàm dùng chung: đọc nhãn, đọc ảnh, ghi CSV, lưu ảnh trung gian.
-Người phụ trách: N1 (khung). Ai cần thêm hàm dùng chung thì thêm vào đây và báo nhóm.
+Ai cần thêm hàm dùng chung thì thêm vào đây và báo nhóm.
 """
 import csv
 import os
@@ -10,10 +10,10 @@ import cv2
 # Các cột số trong labels.csv
 _COT_SO = ['dai_mm', 'rong_mm', 'day_mm', 'theta_deg', 'yaw_vat_deg', 'khoang_cach_mm']
 
-# Các cột chỉ dùng để KIỂM TRA, phương pháp KHÔNG được đọc (ảnh thật sẽ không có)
+# Các cột chỉ dùng để kiểm tra, code phương pháp không được đọc (ảnh thật sẽ không có)
 COT_CAM = ('a4_g', 'vat_g', 'fx', 'fy', 'cx', 'cy', 'azim_deg', 'roll_deg', 'xoay_giay_deg', 'yaw_vat_deg')
 
-# Cột của file kết quả – mọi script thí nghiệm ghi đúng các cột này
+# Cột của file kết quả, mọi script thí nghiệm ghi đúng các cột này
 COT_KET_QUA = ['file', 'phuong_phap', 'bo', 'tang', 'huong', 'vat', 'theta_deg', 'day_mm',
                'dai_that', 'rong_that', 'dai_do', 'rong_do',
                'sai_so_dai', 'sai_so_rong', 'sai_so_mm', 'do_duoc', 'thoi_gian_ms']
