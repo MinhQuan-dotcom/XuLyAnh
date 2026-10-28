@@ -1,5 +1,7 @@
 # Quy ước chung của nhóm
 
+Chia việc phần code: xem [`CHIA_VIEC_CODE.md`](CHIA_VIEC_CODE.md).
+
 Đọc hết trang này trước khi viết dòng code đầu tiên. Ai muốn đổi quy ước thì nhắn trưởng nhóm trước.
 
 ## 1. Hàm đo – baseline và phương pháp đề xuất phải giống nhau
@@ -36,7 +38,7 @@ def do_kich_thuoc(anh, tham_so=None):
 
 ## 5. Git
 
-- Mỗi người làm trên nhánh riêng: `n1-ly-thuyet`, `n3-baseline`, `n4-phuong-phap`…
+- Mỗi người làm trên nhánh riêng theo phần: `phan-A`, `phan-B`, … (lý thuyết: `ly-thuyet`).
 - Trước khi gộp vào `main`: chạy `python -m src.danh_gia --du_lieu data/mau --phuong_phap <...>` không lỗi, rồi mở Pull Request. Một người khác xem và bấm merge.
 - Lời commit viết tiếng Việt, ngắn, nói làm gì: `Them buoc tinh chinh goc giay`, `Sua loi khong tim thay vat tron`.
 - Không commit ảnh lớn, file `.zip`, thư mục `results/`.

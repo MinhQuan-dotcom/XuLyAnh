@@ -7,22 +7,26 @@ Quy ước:
 - Khi chốt tham số sau E2, sửa giá trị ở đây và ghi ngày chốt vào comment.
 """
 
-# ----------------------------------------------------------------- baseline (N3)
+# ----------------------------------------------------------------- baseline (phần E)
 THAM_SO_BASELINE = {
-    'kich_thuoc_lam_mo': 5,        # kernel Gaussian (số lẻ)
-    'chieu_rong_a4_mm': 210.0,
+    'kich_thuoc_lam_mo': 5,        # kernel Gaussian (số lẻ) – phần A
+    'co_mat_na': 10,               # px co mặt nạ giấy vào khi tách vật – phần D
+    'dien_tich_toi_thieu': 200,    # px, bỏ vùng nhỏ hơn khi tách vật – phần D
 }
 
-# ----------------------------------------------------------------- phương pháp đề xuất (N4)
+# ----------------------------------------------------------------- phương pháp đề xuất
 THAM_SO_DE_XUAT = {
-    # Bước 1: tìm tờ giấy
+    # Phần A: tìm tờ giấy
     'kich_thuoc_lam_mo': 5,
-    # Bước 2: tinh chỉnh góc giấy
+    # Phần D: tách vật (trên ảnh đã nắn)
+    'co_mat_na': 10,
+    'dien_tich_toi_thieu': 200,
+    # Phần B: tinh chỉnh góc giấy
     'canny_thap': 50,
     'canny_cao': 150,
     'do_rong_dai_canh': 8,         # px: lấy điểm Canny cách cạnh thô không quá giá trị này
     'bo_dau_canh': 0.10,           # bỏ 10% chiều dài mỗi đầu cạnh khi khớp đường thẳng
-    # Bước 4: nắn ảnh
+    # Phần C: nắn ảnh
     'do_phan_giai_nan': 4.0,       # px/mm của ảnh sau khi nắn
     # Công tắc cho thí nghiệm E3 (ablation) – phương pháp PHẢI tôn trọng hai công tắc này
     'nan_anh': True,               # False: bỏ bước nắn, đo bằng một tỉ lệ duy nhất như baseline

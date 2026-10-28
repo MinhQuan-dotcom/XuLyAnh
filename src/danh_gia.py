@@ -26,12 +26,15 @@ def lay_ham(ten):
     return do_kich_thuoc
 
 
-def chay(ham_do, nhan, thu_muc_du_lieu, tham_so=None, ten='', luu_trung_gian=None):
+def chay(ham_do, nhan, thu_muc_du_lieu, tham_so=None, ten='', luu_trung_gian=None, goi_truoc=None):
     """Chạy ham_do trên từng ảnh trong nhan. Trả về list dict theo tien_ich.COT_KET_QUA.
-    luu_trung_gian: thư mục để lưu ảnh trung gian (None = không lưu)."""
+    luu_trung_gian: thư mục để lưu ảnh trung gian (None = không lưu).
+    goi_truoc: hàm f(dong_nhan) gọi trước mỗi ảnh (chỉ dùng trong tests/ để giả lập)."""
     ket_qua = []
     for i, h in enumerate(nhan):
         anh = tien_ich.doc_anh(thu_muc_du_lieu, h['file'])
+        if goi_truoc:
+            goi_truoc(h)
         t0 = time.perf_counter()
         try:
             dai, rong, trung_gian = ham_do(anh, tham_so)
