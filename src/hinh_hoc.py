@@ -76,3 +76,4 @@ def nan_anh(anh, goc, s, tu_viet=False):
     # Nắn ảnh bằng cv2.warpPerspective
     anh_nan = cv2.warpPerspective(anh, M, (rong, cao))
     return anh_nan, M
+ 
