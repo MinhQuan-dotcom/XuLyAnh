@@ -2,7 +2,7 @@
 
 - `data/mau/`: 25 ảnh mẫu lấy từ bộ tổng hợp, có sẵn trong repo, dùng để chạy thử.
 - `data/dataset_vat_phang/`: bộ tổng hợp đầy đủ 286 ảnh. Tải ở đây:
-  https://drive.google.com/file/d/1pOIU3mLZHTwnr4KlKRzSgF9a8CKbkRxD/view?usp=sharing
+  https://drive.google.com/file/d/1_ky4E2_GmT_f4FakQcAA3LDOE7k2U8hH/view?usp=sharing
   rồi giải nén vào thư mục `data/` (sau khi giải nén phải có `data/dataset_vat_phang/labels.csv`).
 - `data/dataset_that/`: ảnh nhóm tự chụp, sẽ bổ sung sau.
 
