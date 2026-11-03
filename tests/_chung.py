@@ -9,6 +9,9 @@ import sys
 
 import numpy as np
 
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+    
 GOC_REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if GOC_REPO not in sys.path:
     sys.path.insert(0, GOC_REPO)
