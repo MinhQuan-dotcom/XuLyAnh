@@ -4,13 +4,14 @@
 - `data/dataset_vat_phang/`: bộ tổng hợp đầy đủ 286 ảnh. Tải ở đây:
   https://drive.google.com/file/d/1QYRKUxnb0PcF7RHkw_yJgH5MzCJtojsO/view?usp=sharing
   rồi giải nén vào thư mục `data/` (sau khi giải nén phải có `data/dataset_vat_phang/labels.csv`).
-- `data/dataset_that/`: ảnh nhóm tự chụp, sẽ bổ sung sau.
+- `data/dataset_that/`: 48 ảnh nhóm tự chụp (iPhone 14, ngày 06/11/2026), đã đổi tên và có `labels.csv`.
+  Tải ở đây: <dán link Drive của dataset_that.zip>, giải nén vào `data/`.
 
 Có thể tải bằng lệnh thay vì tải tay:
 
 ```
 pip install gdown
-gdown 1pOIU3mLZHTwnr4KlKRzSgF9a8CKbkRxD -O data/dataset_vat_phang.zip
+gdown 1QYRKUxnb0PcF7RHkw_yJgH5MzCJtojsO -O data/dataset_vat_phang.zip
 ```
 
 Ảnh và file zip trong `data/` không đưa lên GitHub (đã có trong .gitignore), trừ `data/mau`.

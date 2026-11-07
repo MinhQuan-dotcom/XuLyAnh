@@ -3,7 +3,11 @@
 Code A-E đã ghép xong và đều ĐẠT. Giai đoạn này không viết thêm thuật toán, chỉ chạy thí nghiệm,
 xem kết quả, giải thích, và viết phần báo cáo của mình.
 
-Trước khi làm: `git pull`, đọc `docs/HUONG_DAN_CHAY.md` (cách cài, tải dữ liệu, chạy lệnh).
+Trước khi làm: `git pull`, đọc `docs/HUONG_DAN_CHAY.md` (cách cài, tải dữ liệu, chạy lệnh)
+và `docs/KET_QUA_HIEN_TAI.md` (số liệu đã có, gồm cả ảnh thật).
+
+**Cập nhật 07/11:** ảnh thật đã có (48 ảnh, `data/dataset_that`, link trong `data/README.md`).
+Không có tầng cực nặng trên ảnh thật. Các việc "ảnh thật" bên dưới làm được ngay.
 
 Quy tắc chung:
 - Mỗi người viết báo cáo vào **file Word riêng**: copy `report/Mau_bao_cao.docx` ra
@@ -89,6 +93,10 @@ Trong `results/e2/trung_gian/` có ảnh từng bước cho mỗi giá trị tha
 (ảnh gốc, góc thô, góc đã chỉnh, ảnh nắn, kết quả) cho báo cáo, gửi C dùng cho sơ đồ pipeline.
 
 ### Việc 3. Phân tích ca lỗi
+
+Trên ảnh thật đã có sẵn ca lỗi rõ: thẻ sinh viên v2 bị đo thiếu chiều rộng (37/54 mm) và
+`v1_t30_ngang` (46/70 mm), xem `docs/KET_QUA_HIEN_TAI.md` mục 3a. Phân tích vì sao, thử sửa `tach_vat`
+(báo trước khi sửa, chạy lại `tests/kiem_tra_D.py` để chắc ảnh tổng hợp vẫn ĐẠT), so trước/sau.
 
 ```bash
 python experiments/e3.py --du_lieu data/dataset_vat_phang

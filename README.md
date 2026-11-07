@@ -56,9 +56,14 @@ src/            code chính
 tests/          file kiểm tra cho từng phần A-E
 experiments/    e1-e4 và vẽ đồ thị
 data/           ảnh mẫu + hướng dẫn tải dữ liệu
-tools/          script tạo bộ ảnh tổng hợp
+tools/          script tạo bộ ảnh tổng hợp, script đổi tên ảnh chụp thật (chup_anh/)
 report/         nháp báo cáo
 docs/           quy ước code, chia việc
 ```
 
-Chia việc phần code: xem `docs/CHIA_VIEC_CODE.md`. Quy ước chung: `docs/QUY_UOC.md`.
+Tài liệu trong `docs/`:
+- `Tuyen_bo_thach_thuc.docx`: tuyên bố thách thức (đề tài)
+- `HUONG_DAN_CHAY.md`: cài đặt, tải dữ liệu, các lệnh chạy
+- `KET_QUA_HIEN_TAI.md`: số liệu đã có
+- `VIEC_GIAI_DOAN_2.md`: việc của từng người giai đoạn 2
+- `QUY_UOC.md`, `CHIA_VIEC_CODE.md`, `HUONG_DAN_CHUP.md`

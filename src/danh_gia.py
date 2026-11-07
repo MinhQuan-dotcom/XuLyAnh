@@ -116,6 +116,9 @@ def _fmt(v):
 
 
 def main():
+    import sys
+    if hasattr(sys.stdout, 'reconfigure'):
+        sys.stdout.reconfigure(encoding='utf-8')
     p = argparse.ArgumentParser()
     p.add_argument('--du_lieu', default='data/dataset_vat_phang')
     p.add_argument('--phuong_phap', default='baseline', choices=['baseline', 'de_xuat'])
