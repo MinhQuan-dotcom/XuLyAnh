@@ -9,11 +9,11 @@ File `src/phuong_phap.py` đã ghép sẵn, khi A, B, C, D đều đạt thì ph
 
 | Phần | Người làm | Nội dung | File | Kiểm tra |
 |---|---|---|---|---|
-| A | | Tìm tờ giấy: 4 góc và mặt nạ | `src/giay.py` | `python tests/kiem_tra_A.py` |
-| B | | Chỉnh lại 4 góc bằng giao điểm các đường thẳng khớp theo cạnh | `src/goc.py` | `python tests/kiem_tra_B.py` |
-| C | | Tự viết homography (DLT) và nắn ảnh | `src/hinh_hoc.py` | `python tests/kiem_tra_C.py` |
-| D | | Tách vật khỏi giấy, đo kích thước theo pixel | `src/vat.py` | `python tests/kiem_tra_D.py` |
-| E | | Baseline (ghép A và D) và vẽ đồ thị sai số | `src/baseline.py`, `experiments/ve_do_thi.py` | `python tests/kiem_tra_E.py` |
+| A |An| Tìm tờ giấy: 4 góc và mặt nạ | `src/giay.py` | `python tests/kiem_tra_A.py` |
+| B |Quân| Chỉnh lại 4 góc bằng giao điểm các đường thẳng khớp theo cạnh | `src/goc.py` | `python tests/kiem_tra_B.py` |
+| C |Đoàn | Tự viết homography (DLT) và nắn ảnh | `src/hinh_hoc.py` | `python tests/kiem_tra_C.py` |
+| D |Dương| Tách vật khỏi giấy, đo kích thước theo pixel | `src/vat.py` | `python tests/kiem_tra_D.py` |
+| E |Bảo| Baseline (ghép A và D) và vẽ đồ thị sai số | `src/baseline.py`, `experiments/ve_do_thi.py` | `python tests/kiem_tra_E.py` |
 
 B và C khó hơn, nên để cho người chắc code và toán. E nhẹ nhất.
 

@@ -12,6 +12,7 @@ Chạy:
 """
 import argparse
 import csv
+import os
 
 import _chung  # để import được src
 from src.cau_hinh import NGUONG_DAT_MM
@@ -37,8 +38,28 @@ def gom_theo_goc(hang, buoc=5):
     đã làm tròn về bội số của `buoc` độ.
     Đầu ra: dict {(phuong_phap, huong): ([goc1, goc2, ...], [sai_so_tb1, sai_so_tb2, ...])}, góc tăng dần.
     """
-    # TODO (Phần E)
-    return {}
+    if buoc <= 0:
+        raise ValueError('buoc phải là số nguyên dương')
+
+    tong = {}
+    dem = {}
+    for h in hang:
+        khoa = (h.get('phuong_phap', ''), h.get('huong', ''))
+        goc = round(float(h['theta_deg']) / buoc) * buoc
+        sai_so = float(h['sai_so_mm'])
+        if khoa not in tong:
+            tong[khoa] = {}
+            dem[khoa] = {}
+        tong[khoa][goc] = tong[khoa].get(goc, 0.0) + sai_so
+        dem[khoa][goc] = dem[khoa].get(goc, 0) + 1
+
+    ket_qua = {}
+    for khoa, gia_tri in tong.items():
+        cac_goc = sorted(gia_tri)
+        cac_sai_so = [gia_tri[goc] / dem[khoa][goc] for goc in cac_goc]
+        ket_qua[khoa] = (cac_goc, cac_sai_so)
+    return ket_qua
+
 
 
 def ve(nhom, duong_dan_png, tieu_de='Sai số đo theo góc nghiêng'):
@@ -48,8 +69,34 @@ def ve(nhom, duong_dan_png, tieu_de='Sai số đo theo góc nghiêng'):
            mỗi phương pháp một màu; huong == 'doc' nét liền '-o', 'ngang' nét đứt '--s'
            plt.axhline(NGUONG_DAT_MM, ...) ; nhãn trục có đơn vị; chú thích (legend); lưới nhạt.
     """
-    # TODO (Phần E)
-    pass
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+
+    mau = {}
+    danh_sach_phuong_phap = list(dict.fromkeys(khoa[0] for khoa in nhom))
+    bang_mau = plt.get_cmap('tab10')
+    for i, phuong_phap in enumerate(danh_sach_phuong_phap):
+        mau[phuong_phap] = bang_mau(i % 10)
+
+    fig, ax = plt.subplots(figsize=(8, 5))
+    for (phuong_phap, huong), (cac_goc, cac_sai_so) in sorted(nhom.items(), key=lambda x: str(x[0])):
+        kieu_net = '-o' if huong == 'doc' else '--s'
+        ax.plot(cac_goc, cac_sai_so, kieu_net, color=mau[phuong_phap],
+                label=f'{phuong_phap} - {huong}')
+
+    ax.axhline(NGUONG_DAT_MM, color='red', linestyle=':', linewidth=1.5,
+               label=f'Ngưỡng đạt {NGUONG_DAT_MM:g} mm')
+    ax.set_title(tieu_de)
+    ax.set_xlabel('Góc nghiêng (độ)')
+    ax.set_ylabel('Sai số (mm)')
+    ax.grid(True, alpha=0.3)
+    ax.legend()
+    fig.tight_layout()
+
+    os.makedirs(os.path.dirname(os.path.abspath(duong_dan_png)), exist_ok=True)
+    fig.savefig(duong_dan_png, dpi=150)
+    plt.close(fig)
 
 
 def main():
