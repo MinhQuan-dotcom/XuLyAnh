@@ -33,6 +33,7 @@ def main():
     kq = danh_gia.chay(ham, nhan, a.du_lieu, ten='de_xuat')
     for d in kq:
         d['goc'] = goc_tron(d['theta_deg'])
+    tien_ich.ghi_csv(os.path.join(ra, 'e4a_ket_qua.csv'), kq)
     print('E4a: tầng cực nặng')
     bang_a = danh_gia.tong_hop(kq, theo=('goc', 'huong'))
     danh_gia.in_bang(bang_a)

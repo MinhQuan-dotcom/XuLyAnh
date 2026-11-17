@@ -75,24 +75,36 @@ python experiments/e4.py --du_lieu data/dataset_vat_phang
 | Lệnh | Làm gì | Kết quả ở đâu |
 |---|---|---|
 | `e1.py` | baseline trên tập eval, sai số theo tầng và hướng đặt vật, lưu các ảnh đo sai nhiều nhất | `results/e1/`, ảnh lỗi ở `results/e1/anh_loi/` |
-| `e2.py` | thử 3 giá trị cho mỗi tham số trên tập dev | `results/e2/tong_hop_e2.csv`, ảnh trung gian ở `results/e2/trung_gian/` |
+| `e2.py` | thử 6 giá trị cho mỗi tham số trên tập dev | `results/e2/tong_hop_e2.csv`, ảnh trung gian ở `results/e2/trung_gian/` |
 | `e3.py` | so baseline, phương pháp đầy đủ, bỏ nắn ảnh, bỏ chỉnh góc | `results/e3/tong_hop_e3.csv` |
 | `e4.py` | tầng cực nặng và vật dày, so góc gãy với dự đoán | `results/e4/` |
 
 `e2.py` và `e3.py` chạy mất vài phút.
 
-Kết quả E3 hiện tại (sai số trung bình chiều dài, mm):
+Kết quả E3 hiện tại trên ảnh tổng hợp (sai số trung bình chiều dài, mm; code ngày 17/11):
 
 | | nhẹ | trung bình | nặng |
 |---|---|---|---|
-| baseline | 4.02 | 14.18 | 13.03 |
-| bỏ nắn ảnh | 4.24 | 14.39 | 13.13 |
-| bỏ chỉnh góc | 0.71 | 0.99 | 1.52 |
-| đầy đủ | 0.52 | 0.78 | 1.29 |
+| baseline | 4.02 | 14.17 | 13.03 |
+| bỏ nắn ảnh | 4.24 | 14.37 | 13.12 |
+| bỏ chỉnh góc | 0.71 | 1.02 | 1.56 |
+| đầy đủ | 0.54 | 0.80 | 1.32 |
 
 ## 6. Vẽ đồ thị
 
 Biểu đồ E2 (3 tham số): `python experiments/ve_bieu_do_e2.py --csv results/e2/tong_hop_e2.csv --ra results/e2/bieu_do`
+
+Bảng phân tích thêm và hình cho báo cáo (chạy sau khi đã có E1-E4 trên ảnh tổng hợp và E3 trên ảnh thật):
+
+```
+python experiments/e1.py --du_lieu data/dataset_that --ra results/that
+python experiments/phan_tich_them.py
+python experiments/ve_hinh_bao_cao.py
+```
+
+`phan_tich_them.py` ghi các bảng csv phụ (cạnh baseline lấy tỉ lệ, mép gần/xa, theo độ dày, chênh dọc/ngang,
+ảnh thật theo hướng và theo vật). `ve_hinh_bao_cao.py` ghi hình vào `results/hinh_bao_cao/`.
+Bản nháp báo cáo `report/Bao_cao_nhap.docx` dùng đúng các file này.
 
 ```bash
 python experiments/ve_do_thi.py results/e3/ket_qua_e3.csv --ra results/do_thi_e3.png

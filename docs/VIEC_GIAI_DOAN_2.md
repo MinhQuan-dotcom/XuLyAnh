@@ -6,6 +6,11 @@ xem kết quả, giải thích, và viết phần báo cáo của mình.
 Trước khi làm: `git pull`, đọc `docs/HUONG_DAN_CHAY.md` (cách cài, tải dữ liệu, chạy lệnh)
 và `docs/KET_QUA_HIEN_TAI.md` (số liệu đã có, gồm cả ảnh thật).
 
+**Cập nhật 17/11 (tối):** đã chạy E4 và E1 trên ảnh thật, điền `report/ly_thuyet.md` mục 6 và `report/lien_quan.md`,
+viết bản nháp báo cáo đầy đủ mục 1-11 ở `report/Bao_cao_nhap.docx`. Việc còn lại của mọi người: đọc phần mình
+phụ trách trong bản nháp, sửa chỗ sai, điền tên/MSSV, ngày commit `ly_thuyet.md` (mục 5.4) và cột "báo cáo" ở
+bảng phân công (mục 11.1). Sau đó làm slide.
+
 **Cập nhật 17/11:** D đã xong E2 (`report/muc_8_1_e2.docx`); lỗi tách thẻ màu nhạt / thẻ xám đã sửa trong
 `src/vat.py`. C và E chưa nộp gì, An chưa có mục 2. Hạn mới cho phần còn lại: 19/11.
 

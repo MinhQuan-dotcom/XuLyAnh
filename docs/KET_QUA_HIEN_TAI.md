@@ -1,4 +1,4 @@
-# Kết quả hiện có (cập nhật 17/11)
+# Kết quả hiện có (cập nhật tối 17/11)
 
 Số liệu dưới đây chạy bằng code hiện tại trên `main` (đã gồm bản sửa `tach_vat` ngày 17/11).
 Số chính thức cho báo cáo lấy từ file csv trong `results/` khi chạy lại theo `docs/HUONG_DAN_CHAY.md`.
@@ -29,6 +29,20 @@ Số chính thức cho báo cáo lấy từ file csv trong `results/` khi chạy
 | bỏ nắn ảnh | 4.24 | 14.37 | 13.12 |
 | bỏ chỉnh góc | 0.71 | 1.02 | 1.56 |
 | đầy đủ | 0.54 | 0.80 | 1.32 |
+
+## 3b. E1 và E4 trên ảnh tổng hợp
+
+Chi tiết và giải thích: `report/ly_thuyet.md` mục 6 và `report/Bao_cao_nhap.docx` mục 4, 8.4, 9.1.
+
+- **E1, tầng nặng sai ít hơn tầng trung bình (13.03 so với 14.17 mm):** ở tầng nặng (39-51 độ) cạnh 297 mm bị co
+  ngắn hơn cạnh 210 mm, nên baseline lấy nhầm cạnh 297 mm để chia 210 (48/48 ảnh, tầng trung bình chỉ 1/48).
+  Chiều theo hướng nghiêng bị đo còn khoảng 0.71, chiều ngang lại gần đúng, nên MAE giảm. Bảng ở
+  `results/e1/canh_ngan_baseline.csv`, `results/e1/ti_le_do_baseline.csv`.
+- **E1, mép gần / mép xa:** bìa v03 ở 40 độ, baseline đo 102.0 mm (gần) và 54.2 mm (xa), thật 110; P đo 111.1 và 112.0.
+- **E4a (60-70 độ):** đo được 100% ảnh; vật mỏng 0.1-0.5 mm sai 1.43 mm, vật 2-3 mm sai 4.86 mm.
+- **E4b (vật dày):** góc gãy đo được sớm hơn dự đoán: 1 mm gãy ở 30 độ (dự đoán 45), 3/5/10 mm đã vượt 1 mm ở 0 độ.
+  Nguyên nhân: sai số nền khoảng 0.55 mm và mặt trên vật dày trông to hơn theo D/(D - t). Mô hình sửa lại
+  e ≈ 0.55 + L·t/D + t·tan θ khớp kết quả.
 
 ## 4. Ảnh thật (48 ảnh, chụp 06/11)
 

@@ -122,4 +122,72 @@ của báo cáo.
 
 ## 6. Đối chiếu sau thí nghiệm
 
-(Điền sau khi chạy E4. Không sửa mục 5.)
+Viết ngày 17/11 sau khi chạy E4 (`python experiments/e4.py --du_lieu data/dataset_vat_phang`).
+Số liệu lấy từ `results/e4/*.csv` và `results/e3/ket_qua_e3.csv`. Mục 5 giữ nguyên như lúc commit.
+
+### 6.1. Thị sai do độ dày (dự đoán 5.1): đúng về dạng, sai về con số
+
+Góc gãy đo được (góc nhỏ nhất mà sai số trung bình chiều dài vượt 1 mm, E4b):
+
+| Độ dày t | Dự đoán | Đo được |
+|---|---|---|
+| 0.1 mm | không gãy (84°) | không gãy đến 45° (0.78 mm ở 45°) |
+| 1 mm | 45° | 30° (1.05 mm); ở 15° đã sát ngưỡng (0.98 mm) |
+| 3 mm | 18° | đã vượt ở 0° (1.08 mm) |
+| 5 mm | 11° | đã vượt ở 0° (1.63 mm) |
+| 10 mm | 6° | đã vượt ở 0° (2.41 mm) |
+
+Những phần đúng:
+- Sai số do độ dày luôn là đo dư: mọi ảnh trong E4b đều có sai số dương.
+- Sai số nằm chủ yếu ở chiều theo hướng nghiêng: vật 10 mm ở 45°, đặt dọc thì chiều dài dư 12.5 mm,
+  chiều rộng dư 2.4 mm; đặt ngang thì ngược lại (dài dư 3.1 mm, rộng dư 12.1 mm).
+- Phần tăng thêm theo góc khớp với t·tan θ: vật 10 mm đặt dọc dư 2.5 / 4.3 / 7.2 / 12.5 mm ở 0 / 15 / 30 / 45°,
+  phần tăng so với 0° là 1.8 / 4.7 / 10.1 mm, còn t·tan θ là 2.7 / 5.8 / 10.0 mm.
+
+Những phần sai: góc gãy thực tế sớm hơn dự đoán, vì công thức θ_gãy = arctan(e_max / t) bỏ sót hai khoản:
+1. Sai số nền khoảng 0.5-0.6 mm có sẵn ở mọi ảnh, kể cả vật 0.1 mm ở 0° (đo dư 0.5-0.65 mm). Nguyên nhân là
+   biên vật bị nhòe 1-2 px sau khi làm mờ và nén JPEG, phần nhòe bị tính vào vật. Khoản này dùng hết khoảng
+   một nửa ngưỡng 1 mm.
+2. Mặt trên của vật dày nằm gần camera hơn mặt bàn, nên trông to hơn theo tỉ lệ khoảng D / (D - t), với D là
+   khoảng cách camera (330-380 mm). Khoản này có ngay cả ở θ = 0: vật 60 mm dày 10 mm dư khoảng 60·10/350 ≈ 1.7 mm.
+   Dự đoán ở mục 5.1 có nhắc tới sai số ở θ = 0 nhưng tính theo góc lệch tia nhìn ở mép vật (0.9 mm) chứ không
+   tính độ phóng to này.
+
+Mô hình sửa lại: e(θ) ≈ e0 + L·t/D + t·tan θ, với e0 ≈ 0.55 mm. Ví dụ t = 10 mm, L = 60 mm, θ = 45°:
+0.55 + 1.7 + 10 ≈ 12.3 mm, đo được 12.5 mm. Với t = 1 mm, điều kiện e < 1 mm cho θ_gãy ≈ 16°, gần với kết quả đo
+(0.98 mm ở 15°, 1.05 mm ở 30°).
+
+### 6.2. Độ phân giải bị co (dự đoán 5.2): đúng
+
+Vật mỏng (t ≤ 0.5 mm) trên ảnh tổng hợp, phương pháp đầy đủ:
+
+| Góc | Sai số TB chiều dài | Tỉ lệ ảnh đạt ≤ 1 mm |
+|---|---|---|
+| 4-13° | 0.49 mm | 100% |
+| 21-31° | 0.57 mm | 94% |
+| 39-51° | 0.73 mm | 69% |
+| 59-71° | 1.43 mm | 6% |
+
+Vật mỏng giữ dưới 1 mm đến khoảng 50° và vượt ngưỡng ở 60-70°, khớp khoảng dự đoán 50-55°.
+
+### 6.3. Không tìm được 4 góc giấy (dự đoán 5.3): đúng trên ảnh tổng hợp, chưa kiểm được trên ảnh thật
+
+Ở 60° và 70° phương pháp vẫn tìm đủ 4 góc và đo được 100% ảnh (E4a, 48 ảnh). Ảnh thật không có tầng 65°
+(không chụp được), nên phần dự đoán cho ảnh thật chưa kiểm chứng.
+
+### 6.4. Tổng hợp cho tập đánh giá (dự đoán 5.4)
+
+| Trường hợp | Dự đoán | Kết quả | Đánh giá |
+|---|---|---|---|
+| Baseline | vượt 1 mm từ 10-15° | vượt ngay từ 4-6° (sai số TB 2.0 mm, chỉ 4% ảnh đạt) | sai: gãy sớm hơn |
+| P, vật t ≤ 1 mm | dưới 1 mm đến khoảng 45°, hết đạt ở 50-55° | vật t ≤ 0.5 mm: 0.73 mm ở 39-51°, 1.43 mm ở 60-70°; vật t = 1-1.2 mm: 0.91 mm ở 39-51° | đúng |
+| P, vật dày 2-3 mm | gãy ở 18-27° | 0.70 mm ở 4-13°, 1.23 mm ở 21-31° | đúng |
+| P, tầng cực nặng | trên 1 mm | 1.43-4.86 mm tuỳ độ dày | đúng |
+
+Baseline gãy sớm hơn dự đoán vì ngoài hệ số cos θ còn có chênh lệch khoảng cách: tỉ lệ px/mm lấy từ cạnh gần
+camera của tờ giấy, còn vật nằm giữa tờ giấy, xa hơn khoảng 150·sin θ mm. Ở 5° chênh khoảng 13 mm trên 350 mm,
+tức vật bị đo nhỏ đi khoảng 3% (đo được: 2.8%), đủ vượt 1 mm với vật dài 60-110 mm.
+
+Ảnh thật cho cùng xu hướng: nắp chai v5 (dày 2 mm) đo dài 28.75 / 30.5 / 31.25 mm ở 10 / 30 / 50°
+(thật 29 mm), tăng theo góc và luôn theo trục nghiêng như dự đoán 5.1.
+

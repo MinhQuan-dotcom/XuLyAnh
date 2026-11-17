@@ -95,10 +95,12 @@ src/            code chính
   danh_gia.py     tính sai số, tổng hợp theo tầng
   tien_ich.py     đọc nhãn, đọc ảnh, ghi csv
 tests/          file kiểm tra cho từng phần A-E
-experiments/    e1-e4, vẽ đồ thị sai số (ve_do_thi.py), biểu đồ E2 (ve_bieu_do_e2.py)
+experiments/    e1-e4, vẽ đồ thị sai số (ve_do_thi.py), biểu đồ E2 (ve_bieu_do_e2.py),
+                bảng phân tích thêm (phan_tich_them.py), hình cho báo cáo (ve_hinh_bao_cao.py)
 data/           ảnh mẫu + hướng dẫn tải dữ liệu
 tools/          script tạo bộ ảnh tổng hợp, công cụ đổi tên ảnh chụp thật (chup_anh/)
-report/         lý thuyết, công trình liên quan, file Word mẫu báo cáo, các mục đã viết (muc_*.docx)
+report/         lý thuyết, công trình liên quan, file Word mẫu báo cáo, mục 8.1 (muc_8_1_e2.docx),
+                bản nháp báo cáo đầy đủ (Bao_cao_nhap.docx)
 docs/           tuyên bố thách thức, hướng dẫn, kết quả, chia việc
 ```
 
