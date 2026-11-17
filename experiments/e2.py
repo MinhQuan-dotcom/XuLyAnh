@@ -14,9 +14,9 @@ from src import tien_ich, danh_gia
 
 # Tham số cần khảo sát: {ten_tham_so: [các giá trị]}. N4 sửa danh sách này nếu cần.
 LUOI = {
-    'canny_cao': [30, 60, 100, 150, 220, 300],
-    'do_rong_dai_canh': [1, 2, 4, 8, 16, 32],
-    'do_phan_giai_nan': [1.0, 2.0, 3.0, 4.0, 6.0, 8.0],
+    'canny_cao': [100, 150, 220],
+    'do_rong_dai_canh': [4, 8, 16],
+    'do_phan_giai_nan': [2.0, 4.0, 8.0],
 }
 ANH_MAU = 0       # chỉ số ảnh trong tập dev dùng để lưu ảnh trung gian
 
