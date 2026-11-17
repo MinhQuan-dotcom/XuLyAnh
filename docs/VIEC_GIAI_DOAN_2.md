@@ -6,6 +6,9 @@ xem kết quả, giải thích, và viết phần báo cáo của mình.
 Trước khi làm: `git pull`, đọc `docs/HUONG_DAN_CHAY.md` (cách cài, tải dữ liệu, chạy lệnh)
 và `docs/KET_QUA_HIEN_TAI.md` (số liệu đã có, gồm cả ảnh thật).
 
+**Cập nhật 17/11:** D đã xong E2 (`report/muc_8_1_e2.docx`); lỗi tách thẻ màu nhạt / thẻ xám đã sửa trong
+`src/vat.py`. C và E chưa nộp gì, An chưa có mục 2. Hạn mới cho phần còn lại: 19/11.
+
 **Cập nhật 07/11:** ảnh thật đã có (48 ảnh, `data/dataset_that`, link trong `data/README.md`).
 Không có tầng cực nặng trên ảnh thật. Các việc "ảnh thật" bên dưới làm được ngay.
 

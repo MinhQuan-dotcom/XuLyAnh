@@ -92,6 +92,8 @@ Kết quả E3 hiện tại (sai số trung bình chiều dài, mm):
 
 ## 6. Vẽ đồ thị
 
+Biểu đồ E2 (3 tham số): `python experiments/ve_bieu_do_e2.py --csv results/e2/tong_hop_e2.csv --ra results/e2/bieu_do`
+
 ```bash
 python experiments/ve_do_thi.py results/e3/ket_qua_e3.csv --ra results/do_thi_e3.png
 python experiments/ve_do_thi.py results/e1/ket_qua_baseline.csv --ra results/do_thi_e1.png

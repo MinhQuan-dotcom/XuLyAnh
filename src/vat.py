@@ -16,7 +16,13 @@ def tach_vat(anh, mat_na=None, tham_so=None):
         anh: Ảnh đầu vào dạng BGR.
         mat_na: Mask giấy, pixel 255 là vùng giấy.
                Nếu None thì xem toàn bộ ảnh là vùng giấy.
-        tham_so: Dictionary chứa các tham số tùy chỉnh.
+        tham_so: Dictionary chứa các tham số tùy chỉnh: co_mat_na, dien_tich_toi_thieu,
+                 nguong_s (vật có màu: S > nguong_s), nguong_v và he_so_v
+                 (vật tối: V < max(nguong_v, he_so_v * độ sáng trung vị của giấy)).
+
+    Sửa 17/11 sau khi phân tích lỗi trên ảnh thật: ngưỡng tối tính theo độ sáng của giấy
+    (thẻ xám đậm sáng hơn 80 nên bị bỏ sót), thêm đóng hình thái để nối các mảng màu rời
+    trên cùng một vật (thẻ có vùng nhạt màu). Với ảnh đã nắn (mat_na None) bỏ viền co_mat_na px.
 
     Returns:
         Contour lớn nhất của vật thể hoặc None nếu không tìm thấy.
@@ -35,79 +41,56 @@ def tach_vat(anh, mat_na=None, tham_so=None):
     )
     nguong_s = int(tham_so.get("nguong_s", 60))
     nguong_v = int(tham_so.get("nguong_v", 80))
+    he_so_v = float(tham_so.get("he_so_v", 0.5))
 
     chieu_cao, chieu_rong = anh.shape[:2]
 
     # 1. Tạo mask vùng giấy
     if mat_na is None:
-        mask_giay = np.full(
-            (chieu_cao, chieu_rong),
-            255,
-            dtype=np.uint8
-        )
+        # ảnh đã nắn: cả ảnh là giấy, bỏ một viền quanh mép
+        mask_giay = np.zeros((chieu_cao, chieu_rong), dtype=np.uint8)
+        if co_mat_na > 0:
+            mask_giay[co_mat_na:-co_mat_na, co_mat_na:-co_mat_na] = 255
+        else:
+            mask_giay[:] = 255
     else:
         if mat_na.shape[:2] != (chieu_cao, chieu_rong):
             return None
 
         if len(mat_na.shape) == 3:
-            mask_giay = cv2.cvtColor(
-                mat_na,
-                cv2.COLOR_BGR2GRAY
-            )
+            mask_giay = cv2.cvtColor(mat_na, cv2.COLOR_BGR2GRAY)
         else:
             mask_giay = mat_na.copy()
 
-        _, mask_giay = cv2.threshold(
-            mask_giay,
-            127,
-            255,
-            cv2.THRESH_BINARY
-        )
+        _, mask_giay = cv2.threshold(mask_giay, 127, 255, cv2.THRESH_BINARY)
 
-    # 2. Erosion mask giấy để loại bỏ vùng sát biên giấy
-    if co_mat_na > 0:
-        kernel = cv2.getStructuringElement(
-            cv2.MORPH_ELLIPSE,
-            (2 * co_mat_na + 1, 2 * co_mat_na + 1)
-        )
+        # 2. Erosion mask giấy để loại bỏ vùng sát biên giấy
+        if co_mat_na > 0:
+            kernel = cv2.getStructuringElement(
+                cv2.MORPH_ELLIPSE, (2 * co_mat_na + 1, 2 * co_mat_na + 1)
+            )
+            mask_giay = cv2.erode(mask_giay, kernel, iterations=1)
 
-        mask_giay = cv2.erode(
-            mask_giay,
-            kernel,
-            iterations=1
-        )
+    if cv2.countNonZero(mask_giay) == 0:
+        return None
 
-    # 3. Chuyển ảnh sang HSV
+    # 3. Tách các pixel có màu bão hòa hoặc có độ sáng thấp
     hsv = cv2.cvtColor(anh, cv2.COLOR_BGR2HSV)
+    mask_mau = cv2.inRange(hsv[:, :, 1], nguong_s + 1, 255)
+    # Ngưỡng tối tính theo độ sáng của chính tờ giấy trong ảnh (vật xám đậm vẫn sáng hơn 80
+    # nhưng tối hơn hẳn giấy); không thấp hơn nguong_v.
+    v_giay = float(np.median(hsv[:, :, 2][mask_giay > 0]))
+    nguong_v_thuc = max(nguong_v, int(he_so_v * v_giay))
+    mask_toi = cv2.inRange(hsv[:, :, 2], 0, nguong_v_thuc - 1)
 
-    # Tách các pixel có màu bão hòa hoặc có độ sáng thấp
-    kenh_s = hsv[:, :, 1]
-    kenh_v = hsv[:, :, 2]
+    # 4. Kết hợp hai điều kiện: S > nguong_s HOẶC V < nguong_v_thuc
+    mask_vat = cv2.bitwise_or(mask_mau, mask_toi)
 
-    mask_mau = cv2.inRange(
-        kenh_s,
-        nguong_s + 1,
-        255
-    )
-
-    mask_toi = cv2.inRange(
-        kenh_v,
-        0,
-        nguong_v - 1
-    )
-
-    # 4. Kết hợp hai điều kiện:
-    # S > nguong_s HOẶC V < nguong_v
-    mask_vat = cv2.bitwise_or(
-        mask_mau,
-        mask_toi
-    )
-
-    # 5. Chỉ giữ vùng nằm bên trong giấy
-    mask_vat = cv2.bitwise_and(
-        mask_vat,
-        mask_giay
-    )
+    # 5. Chỉ giữ vùng nằm bên trong giấy, bỏ nhiễu nhỏ (mở), rồi đóng hình thái để nối các mảng màu
+    # rời nhau trên cùng một vật (ví dụ thẻ có vùng nhạt màu xen giữa chữ và sọc từ)
+    mask_vat = cv2.bitwise_and(mask_vat, mask_giay)
+    mask_vat = cv2.morphologyEx(mask_vat, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
+    mask_vat = cv2.morphologyEx(mask_vat, cv2.MORPH_CLOSE, np.ones((7, 7), np.uint8))
 
     # 6. Tìm contour bên ngoài
     contours, _ = cv2.findContours(

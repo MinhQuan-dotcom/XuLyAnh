@@ -5,6 +5,9 @@ THAM_SO_BASELINE = {
     'kich_thuoc_lam_mo': 5,        # kernel Gaussian, số lẻ (phần A)
     'co_mat_na': 10,               # px, co mặt nạ giấy khi tách vật (phần D)
     'dien_tich_toi_thieu': 200,    # px, bỏ vùng nhỏ hơn khi tách vật (phần D)
+    'nguong_s': 60,                # vật có màu: S > nguong_s (phần D)
+    'nguong_v': 80,                # vật tối: V < max(nguong_v, he_so_v * độ sáng giấy) (phần D)
+    'he_so_v': 0.5,                # thêm 17/11 sau khi phân tích lỗi thẻ xám trên ảnh thật
 }
 
 THAM_SO_DE_XUAT = {
@@ -13,6 +16,9 @@ THAM_SO_DE_XUAT = {
     # phần D
     'co_mat_na': 10,
     'dien_tich_toi_thieu': 200,
+    'nguong_s': 60,
+    'nguong_v': 80,
+    'he_so_v': 0.5,
     # phần B
     'canny_thap': 50,
     'canny_cao': 150,

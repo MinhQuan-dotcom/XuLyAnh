@@ -1,0 +1,65 @@
+GHI CHÚ BỘ ẢNH THẬT
+Bài tập lớn môn Xử lý ảnh và Thị giác máy tính (121036)
+Đề tài: Đo kích thước vật từ ảnh chụp nghiêng, dùng tờ A4 làm chuẩn
+
+==================================================
+THÔNG TIN CHUNG
+==================================================
+Người chụp     : Trương Tấn An
+Ngày chụp      :6/11/2026, khoảng 17h
+Điện thoại     : iPhone 14 (camera chính, zoom 1x, không flash, định dạng JPG)
+Nơi chụp       : gần cửa sổ
+Ánh sáng       :đèn trần 
+Nền            :vải đen /
+Giấy           : A4 mới, dán băng keo xuống bàn; đo lại bằng thước được 208 x 298 mm
+                 (trong sai số thước, dùng khổ chuẩn 210 x 297 mm)
+Khoảng cách camera - tâm giấy: khoảng 35 cm
+Cách đo góc    : app Đo > Thăng bằng
+  
+
+Số ảnh         : 48 (không chụp đợt 65 độ), chụp đúng thứ tự trong tools/chup_anh/thu_tu_chup.csv (stt 1 -> 48)
+Tên file       : từ IMG_4219.jpg đến IMG_4271.jpg
+
+==================================================
+KÍCH THƯỚC VẬT (đo tới 1 mm, đơn vị mm)
+Vật tròn: dài = rộng = đường kính
+==================================================
+mã  | vật thật                | dài   | rộng  | dày
+----+-------------------------+-------+-------+------
+v1  | thẻ đen                 |121    |70    | 2
+v2  | thẻ sinh viên           |85     |54     |1
+v3  | bìa chữ nhât            |107    |79     |2
+v4  | bìa vuông               |80     |80     |2
+v5  | nắp chai                |29     |29     |2
+v6  | thẻ tích điểm           | 82    |52     |1
+d1  |  bìa vuông khác màu     | 80    |80     |2
+d2  | bài chữ nhật khác màu   |107    |79     |2
+
+==================================================
+GÓC ĐO ĐƯỢC TỪNG ĐỢT (độ)
+==================================================
+đợt | ảnh (stt) | vật              | góc dự kiến | góc đo được
+----+-----------+------------------+-------------+------------
+ 1  | 1 - 12    | v1-v6 dọc+ngang  | 10          |10
+ 2  | 13 - 24   | v1-v6 dọc+ngang  | 30          |30
+ 3  | 25 - 36   | v1-v6 dọc+ngang  | 50          |50
+ 4  | 37 - 40   | d1,d2 dọc+ngang  | 0           |0
+ 5  | 41 - 44   | d1,d2 dọc+ngang  | 30          |30
+ 6  | 45 - 48   | d1,d2 dọc+ngang  | 50          |50
+
+==================================================
+GHI CHÚ KHÁC
+==================================================
+- Ảnh bị chói / mờ / phải chụp lại (ghi stt):
+- Vấn đề gặp khi chụp:
+- Thư mục anh_thu/: 6 tấm chụp thử (thẻ xe trắng, mặt bàn bị loá).
+  Giữ lại làm ví dụ ảnh lỗi cho báo cáo: vật cùng màu giấy thì tách vật hỏng,
+  mặt bàn loá thì tìm sai góc giấy.
+
+==================================================
+CẤU TRÚC THƯ MỤC TRÊN DRIVE
+==================================================
+anh_that/
+  GHI_CHU.txt     (file này)
+  anh_goc/        48 ảnh gốc, không đổi tên
+  anh_thu/        6 tấm chụp thử
