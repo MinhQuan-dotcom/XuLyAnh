@@ -31,6 +31,7 @@ source ~/.bashrc
 | `data/mau` | 25 ảnh tổng hợp | có sẵn trong repo, dùng để chạy thử |
 | `data/dataset_vat_phang` | 286 ảnh tổng hợp | tải từ Drive, xem `data/README.md` |
 | `data/dataset_that` | 48 ảnh tự chụp | tải từ Drive, xem `data/README.md` |
+| `data/PHAN_TANG.md` | tiêu chí phân tầng theo góc nghiêng, số ảnh mỗi tầng | có sẵn |
 
 Ảnh tổng hợp biết chính xác góc nghiêng và kích thước, dùng để phát triển, kiểm tra từng phần và cho E4.
 Ảnh tự chụp là tập đánh giá chính (3 tầng góc 10, 30, 50 độ và tập dev; không có tầng cực nặng).
@@ -109,5 +110,6 @@ Tài liệu trong `docs/`:
 - `HUONG_DAN_CHAY.md`: cài đặt, tải dữ liệu, các lệnh chạy, lỗi hay gặp
 - `KET_QUA_HIEN_TAI.md`: số liệu đã có (ảnh tổng hợp và ảnh thật)
 - `VIEC_GIAI_DOAN_2.md`: việc của từng người giai đoạn 2
+- `CHUAN_BI_VAN_DAP.md`: mỗi người cần nắm gì về phần mình đứng tên, số liệu, câu hỏi vấn đáp, chia phần thuyết trình
 - `HUONG_DAN_CHUP.md`: cách chụp ảnh thật
 - `QUY_UOC.md`, `CHIA_VIEC_CODE.md`: quy ước code, chia việc phần code

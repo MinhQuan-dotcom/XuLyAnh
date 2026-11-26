@@ -1,4 +1,4 @@
-# Kết quả hiện có (cập nhật tối 17/11)
+# Kết quả hiện có (cập nhật 26/11)
 
 Số liệu dưới đây chạy bằng code hiện tại trên `main` (đã gồm bản sửa `tach_vat` ngày 17/11).
 Số chính thức cho báo cáo lấy từ file csv trong `results/` khi chạy lại theo `docs/HUONG_DAN_CHAY.md`.
@@ -20,6 +20,16 @@ Số chính thức cho báo cáo lấy từ file csv trong `results/` khi chạy
 - `do_rong_dai_canh`: 1-2 px kém hơn, từ 4 px trở lên ổn định. Giữ 8.
 - `do_phan_giai_nan` (s): s = 1 có MAE thấp nhất trên ảnh tổng hợp nhưng là do bù trừ sai số
   (phương pháp luôn đo dư, ảnh nắn thô làm vật nhỏ lại); trên dev ảnh thật s = 1 lại kém hơn. Giữ s = 4.
+
+Bổ sung 26/11 (E2 giờ có tham số cho cả 4 bước, mục 8.1 của `report/Bao_cao_nhap.docx`, Bảng 8.6 và Hình 8.2):
+- `kich_thuoc_lam_mo` (1-21, bước tìm giấy): không ảnh hưởng. Kernel 21 làm góc thô lệch 3.3 px nhưng bước
+  chỉnh góc khớp lại trên ảnh gốc nên sai lệch bị xóa. Giữ 5.
+- `nguong_s` (20-140, bước tách vật): 20 hỏng (lấy cả giấy). Trên ảnh tổng hợp MAE giảm khi tăng ngưỡng nhưng
+  sai số có dấu cũng giảm: lại là bù trừ. Trên dev ảnh thật 100 đã đo hụt, 140 chỉ đo được 25% ảnh (bìa nâu S ≈ 110).
+  Giữ 60, giá trị duy nhất không hỏng trên cả hai bộ.
+- `he_so_v` (0-0.7): gần như không đổi vì vật trong cả hai tập dev đều có màu; dev thiếu vật tối/nhạt màu.
+  0.5 chọn theo lý lẽ, đã ghi là hạn chế.
+- `tong_hop_e2.csv` giờ có thêm cột sai số có dấu (`sai_so_dai_co_dau_mm`, `sai_so_rong_co_dau_mm`).
 
 ## 3. E3 trên ảnh tổng hợp (sai số trung bình chiều dài, mm)
 

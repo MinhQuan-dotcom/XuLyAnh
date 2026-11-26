@@ -8,6 +8,9 @@ TEN_THAM_SO = {
     "canny_cao": ("Ngưỡng Canny cao", "Giá trị canny_cao"),
     "do_rong_dai_canh": ("Độ rộng vùng lấy điểm biên", "Giá trị do_rong_dai_canh"),
     "do_phan_giai_nan": ("Độ phân giải ảnh nắn", "Giá trị do_phan_giai_nan"),
+    "kich_thuoc_lam_mo": ("Kích thước làm mờ (tìm giấy)", "Giá trị kich_thuoc_lam_mo"),
+    "nguong_s": ("Ngưỡng bão hòa S (tách vật)", "Giá trị nguong_s"),
+    "he_so_v": ("Hệ số độ sáng V (tách vật)", "Giá trị he_so_v"),
 }
 
 def main():

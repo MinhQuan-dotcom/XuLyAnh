@@ -1,5 +1,6 @@
 # Dữ liệu
 
+- Tiêu chí phân tầng và số ảnh mỗi tầng: xem `data/PHAN_TANG.md`.
 - `data/mau/`: 25 ảnh mẫu lấy từ bộ tổng hợp, có sẵn trong repo, dùng để chạy thử.
 - `data/dataset_vat_phang/`: bộ tổng hợp đầy đủ 286 ảnh. Tải ở đây:
   https://drive.google.com/file/d/1QYRKUxnb0PcF7RHkw_yJgH5MzCJtojsO/view?usp=sharing

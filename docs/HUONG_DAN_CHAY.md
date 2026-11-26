@@ -75,7 +75,7 @@ python experiments/e4.py --du_lieu data/dataset_vat_phang
 | Lệnh | Làm gì | Kết quả ở đâu |
 |---|---|---|
 | `e1.py` | baseline trên tập eval, sai số theo tầng và hướng đặt vật, lưu các ảnh đo sai nhiều nhất | `results/e1/`, ảnh lỗi ở `results/e1/anh_loi/` |
-| `e2.py` | thử 6 giá trị cho mỗi tham số trên tập dev | `results/e2/tong_hop_e2.csv`, ảnh trung gian ở `results/e2/trung_gian/` |
+| `e2.py` | 6 tham số (làm mờ, Canny, độ rộng dải, s, ngưỡng S, hệ số V), mỗi tham số 6 giá trị, trên tập dev | `results/e2/tong_hop_e2.csv`, ảnh trung gian ở `results/e2/trung_gian/` |
 | `e3.py` | so baseline, phương pháp đầy đủ, bỏ nắn ảnh, bỏ chỉnh góc | `results/e3/tong_hop_e3.csv` |
 | `e4.py` | tầng cực nặng và vật dày, so góc gãy với dự đoán | `results/e4/` |
 

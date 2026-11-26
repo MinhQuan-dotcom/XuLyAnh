@@ -1,6 +1,7 @@
 data/*
 !data/mau/
 !data/README.md
+!data/PHAN_TANG.md
 results/*
 !results/.gitkeep
 __pycache__/
